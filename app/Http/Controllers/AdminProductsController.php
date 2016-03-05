@@ -23,4 +23,29 @@ class AdminProductsController extends Controller
 
     	return view('products.index', compact('products'));
     }
+
+    public function create()
+    {
+        return "Estamos em construção";
+    }
+
+    public function store()
+    {
+        return "Estamos em construção";
+    }
+
+    public function edit($id)
+    {
+        return "Estamos em construção";
+    }
+
+    public function update($id)
+    {
+        return "Estamos em construção";
+    }
+
+    public function destroy($id)
+    {
+        return "Estamos em construção";
+    }
 }

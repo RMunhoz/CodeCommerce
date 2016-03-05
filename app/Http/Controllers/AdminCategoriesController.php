@@ -23,4 +23,29 @@ class AdminCategoriesController extends Controller
 
     	return view('categories.index', compact('categories'));
     }
+
+    public function create()
+    {
+        return "Estamos em construção";
+    }
+
+    public function store()
+    {
+        return "Estamos em construção";
+    }
+
+    public function edit($id)
+    {
+        return "Estamos em construção";
+    }
+
+    public function update($id)
+    {
+        return "Estamos em construção";
+    }
+
+    public function destroy($id)
+    {
+        return "Estamos em construção";
+    }
 }
