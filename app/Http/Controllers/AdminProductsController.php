@@ -6,46 +6,57 @@ use Illuminate\Http\Request;
 
 use CodeCommerce\Product;
 use CodeCommerce\Http\Requests;
+use CodeCommerce\Http\Requests\ProductRequest;
 use CodeCommerce\Http\Controllers\Controller;
 
 class AdminProductsController extends Controller
 {
-    private $products;
+    private $productsModel;
 
     public function __construct(Product $product)
     {
-    	$this->products = $product;
+    	$this->productsModel = $product;
     }
 
     public function index()
     {
-    	$products = $this->products->all();
+    	$products = $this->productsModel->all();
 
     	return view('products.index', compact('products'));
     }
 
     public function create()
     {
-        return "Estamos em construção";
+        return view('products.create');
     }
 
-    public function store()
+    public function store(ProductRequest $request)
     {
-        return "Estamos em construção";
+        $input = $request->all();
+        $input['recommend'] = $request->get('recommend') ? true : false;
+        $input['featured'] = $request->get('featured') ? true : false;
+        $product = $this->productsModel->fill($input);
+        $product->save();
+        return redirect()->route('admin.products.index');
     }
 
     public function edit($id)
     {
-        return "Estamos em construção";
+        $product = $this->productsModel->find($id);
+        return view('products.edit', compact('product'));
     }
 
-    public function update($id)
+    public function update(ProductRequest $request, $id)
     {
-        return "Estamos em construção";
+        $request['recommend'] = $request->get('recommend') ? true : false;
+        $request['featured'] = $request->get('featured') ? true : false;
+        $this->productsModel->find($id)->update($request->all());
+        return redirect()->route('admin.products.index');
     }
 
     public function destroy($id)
     {
-        return "Estamos em construção";
+        $this->productsModel->find($id)->delete();
+        return redirect()->route('admin.products.index');
     }
 }
