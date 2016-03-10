@@ -14,9 +14,11 @@
 </div>
 
 <div class="form-group">
-	{!! Form::label('featured', 'Featured:') !!}
-	{!! Form::radio('featured') !!}
-	&nbsp;&nbsp;
-	{!! Form::label('recommend', 'Recommend:') !!}
-	{!! Form::radio('recommend') !!}
+    {!! Form::label('featured', 'Featured:') !!}
+    {!! Form::checkbox('featured') !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('recommend', 'Recommend:') !!}
+    {!! Form::checkbox('recommend') !!}
 </div>

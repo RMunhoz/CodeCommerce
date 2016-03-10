@@ -11,7 +11,9 @@
 			
 			@include('products._form')
 
-		{!! form::submit('Save Product',['class'=>'btn btn-success'])!!}	
+		<div class="form-group">
+            {!! Form::submit('Save Product', ['class'=>'btn btn-primary']) !!}
+        </div>	
 
 		{!! Form::close() !!}	
 	
