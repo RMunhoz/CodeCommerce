@@ -5,5 +5,5 @@
 
 <div class="form-group">
 	{!! Form::label('description', 'Description:') !!}
-	{!! Form::textarea('description', null, ['class'=>'form-control']) !!}
+	{!! Form::textarea('description', null, ['class'=>'form-control', 'rows'=> 5 ]) !!}
 </div>
