@@ -18,6 +18,6 @@ class UserTableSeeder extends Seeder
         	]
         );
     	
-    	factory('CodeCommerce\User',10)->create();
+    	factory('CodeCommerce\User',9)->create();
     }
 }

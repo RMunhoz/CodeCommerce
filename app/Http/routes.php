@@ -8,6 +8,9 @@ Route::pattern('id', '[0-9]+');
 
 Route::group(['prefix'=>'admin'], function(){
 
+	Route::get('/users',['as'=>'admin.users.index','uses'=>'AdminUsersController@index']);
+	Route::get('/users/destroy/{id}',['as'=>'admin.users.destroy','uses'=>'AdminUsersController@destroy']);
+
 	Route::group(['prefix'=>'categories'], function(){
 
 		Route::get('/',['as'=>'admin.categories.index','uses'=>'AdminCategoriesController@index']);

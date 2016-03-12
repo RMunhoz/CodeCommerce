@@ -7,6 +7,16 @@
 	<div class="container">
 		<h1>Categories</h1>
 
+		@if($errors->any())
+			
+			<ul class="alert-danger">
+				@foreach($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+
+		@endif
+
 		<a href="{{ route('admin.categories.create') }}" class="btn btn-default">New Category</a>
 		<br>
 		<br>
@@ -30,8 +40,10 @@
 						class="btn btn-danger">Delete</a>
 					</td>
 				</tr>	
-			@endforeach
-			
-		</table>	
+			@endforeach			
+		</table>
+
+		{!! $categories->render() !!}	
+		
 	</div>		
 @stop

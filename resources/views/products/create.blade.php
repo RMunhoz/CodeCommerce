@@ -22,6 +22,7 @@
 			@include('products._form')
 
 			{!! Form::submit('Add Product',['class'=>'btn btn-primary']) !!}
+			<a href="{{ route('admin.products.index') }}" class="btn btn-default">Voltar</a>
 
 		{!! Form::close() !!}
 

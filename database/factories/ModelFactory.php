@@ -19,10 +19,10 @@ $factory->define(CodeCommerce\Category::class, function (Faker\Generator $faker)
 $factory->define(CodeCommerce\Product::class, function (Faker\Generator $faker) {
     return [
     	'name' => $faker->word,
-    	'description' => $faker->sentence,
-    	'price' => $faker->randomNumber,
-    	'featured' => $faker->boolean,
-    	'recommend' => $faker->boolean
+        'description' => $faker->sentence,
+        'price' => $faker->randomFloat(4,1,4),
+        'featured' => $faker->boolean,
+        'recommend' => $faker->boollean,
+        'category_id' => $faker->numberBetween(1, 15),
     ];
 });
-
