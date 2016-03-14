@@ -22,7 +22,7 @@ $factory->define(CodeCommerce\Product::class, function (Faker\Generator $faker) 
         'description' => $faker->sentence,
         'price' => $faker->randomFloat(4,1,4),
         'featured' => $faker->boolean,
-        'recommend' => $faker->boollean,
+        'recommend' => $faker->boolean,
         'category_id' => $faker->numberBetween(1, 15),
     ];
 });
