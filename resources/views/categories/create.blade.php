@@ -17,13 +17,13 @@
 
 		@endif		
 
-		{!! Form::open(['route'=>'admin.categories.store', 'method'=>'post']) !!}
+		{!! Form::open(['route'=>'categories.store', 'method'=>'post']) !!}
 
 			@include('categories._form')
 
 			{!! Form::submit('Add Category',['class'=>'btn btn-primary']) !!}
 			
-			<a href="{{ route('admin.categories.index') }}" class="btn btn-default">Voltar</a>
+			<a href="{{ route('categories.index') }}" class="btn btn-default">Voltar</a>
 
 		{!! Form::close() !!}
 

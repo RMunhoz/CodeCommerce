@@ -35,13 +35,13 @@ class AdminCategoriesController extends Controller
         $input = $request->all();
         $category = $this->categoryModel->fill($input);
         $category->save();
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('categories.index');
     }
 
     public function destroy($id)
     {
         $this->categoryModel->find($id)->delete();
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('categories.index');
     }
 
     public function edit($id)
@@ -53,7 +53,7 @@ class AdminCategoriesController extends Controller
     public function update(CategoryRequest $request, $id)
     { 
         $this->categoryModel->find($id)->update($request->all());
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('categories.index');
     }
 
 }

@@ -17,7 +17,7 @@
 
 		@endif
 
-		<a href="{{ route('admin.products.create') }}" class="btn btn-default">New Product</a>
+		<a href="{{ route('products.create') }}" class="btn btn-default">New Product</a>
 		<br>
 		<br>
 		<table class="table">
@@ -38,9 +38,11 @@
 					<td>{{$product->price}}</td>
 					<td>{{$product->category->name}}</td>
 					<td>
-						<a href="{{ route('admin.products.edit',['id' => $product->id]) }}" 
+						<a href="{{ route('products.edit',['id' => $product->id]) }}" 
 						class="btn btn-primary">Edit</a>
-						<a href="{{ route('admin.products.destroy',['id' => $product->id]) }}" 
+						<a href="{{ route('products.images',['id' => $product->id]) }}" 
+						class="btn btn-warning">Images</a>
+						<a href="{{ route('products.destroy',['id' => $product->id]) }}" 
 						class="btn btn-danger">Delete</a>
 					</td>
 				</tr>	

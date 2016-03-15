@@ -16,14 +16,15 @@
 
 		@endif
 
-	<h1>Edit Product {{$product->name}}</h1>
+		<h1>Edit Product {{$product->name}}</h1>
 		
-		{!! Form::model($product,['route'=>['admin.products.update',$product->id], 'method'=>'put']) !!}
+		{!! Form::model($product,['route'=>['products.update',$product->id], 'method'=>'put']) !!}
 			
 			@include('products._form')
 
         {!! Form::submit('Save Product', ['class'=>'btn btn-primary']) !!}
-		<a href="{{ route('admin.products.index') }}" class="btn btn-default">Voltar</a>
+
+		<a href="{{ route('products.index') }}" class="btn btn-default">Voltar</a>
 
 		{!! Form::close() !!}	
 	

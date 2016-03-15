@@ -17,12 +17,12 @@
 
 		@endif		
 
-		{!! Form::open(['route'=>'admin.products.store', 'method'=>'post']) !!}
+		{!! Form::open(['route'=>'products.store', 'method'=>'post']) !!}
 
 			@include('products._form')
 
 			{!! Form::submit('Add Product',['class'=>'btn btn-primary']) !!}
-			<a href="{{ route('admin.products.index') }}" class="btn btn-default">Voltar</a>
+			<a href="{{ route('products.index') }}" class="btn btn-default">Voltar</a>
 
 		{!! Form::close() !!}
 

@@ -18,13 +18,13 @@
 
 		<h1>Edit Category: {{$category->name}}</h1>
 		
-		{!! Form::model($category, ['route'=>['admin.categories.update', $category->id],'method'=>'put']) !!}
+		{!! Form::model($category, ['route'=>['categories.update', $category->id],'method'=>'put']) !!}
 
-		@include('categories._form')
+			@include('categories._form')
 
 		{!! Form::submit('Save category',['class'=>'btn btn-success']) !!}
 
-		<a href="{{ route('admin.categories.index') }}" class="btn btn-default">Voltar</a>
+		<a href="{{ route('categories.index') }}" class="btn btn-default">Voltar</a>
 
 		{!! Form::close() !!} 		
 	
