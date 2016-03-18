@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
+use CodeCommerce\Tag;
 use CodeCommerce\Category;
 use CodeCommerce\Product;
 use CodeCommerce\ProductImage;
@@ -42,24 +43,48 @@ class AdminProductsController extends Controller
         $input = $request->all();
         $input['recommend'] = $request->get('recommend') ? true : false;
         $input['featured'] = $request->get('featured') ? true : false;
+        $arrayTags = $this->tagToArray($input['tags']);
         $product = $this->productModel->fill($input);
         $product->save();
+        $product->tags()->sync($arrayTags);
         return redirect()->route('products.index');
+    }
+
+    private function tagToArray($tags)
+    {
+        $tags = explode(",", $tags);
+        $tags = array_map('trim', $tags);
+
+        $tagCollection = [];
+        foreach ($tags as $tag) {
+            $t = Tag::firstOrCreate(['name' => $tag]);
+            array_push($tagCollection, $t->id);
+        }
+
+        return $tagCollection;
     }
 
     public function edit(Category $category, $id)
     {
         $categories = $category->lists('name', 'id');
         $product = $this->productModel->find($id);
+        $product->tags = $product->tag_list;
         return view('products.edit', compact('categories', 'product'));
     }
 
     public function update(ProductRequest $request, $id)
     {
-        $request['recommend'] = $request->get('recommend') ? true : false;
-        $request['featured'] = $request->get('featured') ? true : false;
-        $this->productModel->find($id)->update($request->all());
-        return redirect()->route('products.index');
+        $input = $request->all();
+        $input['featured'] = $request->get('featured') ? true : false;
+        $input['recommend'] = $request->get('recommend') ? true : false;
+
+        $arrayTags = $this->tagToArray($input['tags']);
+
+        $this->productModel->find($id)->update($input);
+
+        $product = Product::find($id);
+        $product->tags()->sync($arrayTags);
+        return redirect()->route('products.index');;
     }
 
     public function destroy($id)
@@ -99,4 +124,6 @@ class AdminProductsController extends Controller
         $image->delete();
         return redirect()->route('products.images', ['id'=>$image->id]);
     }
+
+
 }
