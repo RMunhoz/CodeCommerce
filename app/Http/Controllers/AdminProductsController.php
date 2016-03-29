@@ -82,7 +82,7 @@ class AdminProductsController extends Controller
 
         $this->productModel->find($id)->update($input);
 
-        $product = Product::find($id);
+        $product = $this->productModel->find($id);
         $product->tags()->sync($arrayTags);
         return redirect()->route('products.index');;
     }

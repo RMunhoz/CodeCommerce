@@ -1,10 +1,14 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::pattern('id', '[0-9]+');
+
+Route::get('/','StoreController@index');
+
+Route::group(['prefix'=>'store'], function(){
+
+	Route::get('/category/{id}',['as'=>'store.category','uses'=>'StoreController@category']);	
+
+});
 
 Route::group(['prefix'=>'admin'], function(){
 

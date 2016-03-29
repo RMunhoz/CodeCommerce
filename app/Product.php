@@ -36,4 +36,18 @@ class Product extends Model
         return implode(', ', $tags);
     }
 
+    public function scopeFeatured($query)
+    {
+        return $query->where('featured','=','1')->limit(3);
+    }
+
+    public function scopeRecommend($query)
+    {
+        return $query->where('recommend','=','1')->orderBy('price')->limit(3);
+    }
+
+    public function scopeFindCategory($query, $id)
+    {
+        return $query->where('category_id', '=', $id);
+    }
 }
