@@ -46,8 +46,8 @@ class Product extends Model
         return $query->where('recommend','=','1')->orderBy('price')->limit(3);
     }
 
-    public function scopeFindCategory($query, $id)
+    public function scopeFindCategory($query, $type)
     {
-        return $query->where('category_id', '=', $id);
+        return $query->where('category_id', '=', $type);
     }
 }
