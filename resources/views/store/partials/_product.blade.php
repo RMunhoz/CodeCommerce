@@ -13,7 +13,7 @@
 
                     <h2>R$ {{ number_format($product->price, 2, ',', '.') }}</h2>
                     <p>{{ $product->name }}</p>
-                    <a href="#" class="btn btn-default add-to-cart">
+                    <a href="{{route('store.product', ['id'=>$product->id])}}" class="btn btn-default add-to-cart">
                         <i class="fa fa-crosshairs"></i>Mais detalhes</a>
                     <a href="#" class="btn btn-default add-to-cart">
                         <i class="fa fa-shopping-cart"></i>Adicionar no carrinho</a>
@@ -22,7 +22,7 @@
                     <div class="overlay-content">
                         <h2>R$ {{ number_format($product->price, 2, ',', '.') }}</h2>
                         <p>{{ $product->name }}</p>
-                        <a href="#" class="btn btn-default add-to-cart">
+                        <a href="{{route('store.product', ['id'=>$product->id])}}" class="btn btn-default add-to-cart">
                             <i class="fa fa-crosshairs"></i>Mais detalhes</a>
                         <a href="#" class="btn btn-default add-to-cart">
                             <i class="fa fa-shopping-cart"></i>Adicionar no carrinho</a>
