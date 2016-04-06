@@ -5,7 +5,11 @@ Route::pattern('id', '[0-9]+');
 Route::get('/', ['as' => 'store.index', 'uses' => 'StoreController@index']);
 Route::get('category/{id}',['as'=>'store.category','uses'=>'StoreController@category']);
 Route::get('product/{id}',['as'=>'store.product','uses'=>'StoreController@product']);
-Route::get('tag/{id}',['as'=>'store.tag','uses'=>'StoreController@tag']);	
+Route::get('tag/{id}',['as'=>'store.tag','uses'=>'StoreController@tag']);
+Route::get('cart',['as'=>'cart','uses'=>'CartController@index']);
+Route::get('cart/add/{id}',['as'=>'cart.add','uses'=>'CartController@add']);
+Route::get('cart/destroy/{id}',['as'=>'cart.destroy','uses'=>'CartController@destroy']);
+Route::put('cart/update/{id}',['as'=>'cart.update','uses'=>'CartController@update']);	
 
 Route::group(['prefix'=>'admin'], function(){
 
@@ -21,6 +25,7 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::put('/update/{id}',['as'=>'categories.update','uses'=>'AdminCategoriesController@update']);
 		Route::get('/destroy/{id}',['as'=>'categories.destroy',
 			'uses'=>'AdminCategoriesController@destroy']);
+		
 	});
 
 	Route::group(['prefix'=>'products'], function(){
