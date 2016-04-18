@@ -9,7 +9,7 @@ class CategoryTableSeeder extends Seeder
 
     public function run()
     {
-        //DB::table('categories')->truncate();
+        DB::table('categories')->truncate();
         factory('CodeCommerce\Category',15)->create();
 
         /*
@@ -21,8 +21,7 @@ class CategoryTableSeeder extends Seeder
     			'name' => $faker->word,
 		    	'description' => $faker->sentence,	
         	]);
-        }
-        */	
+        } */	
 
     }
     

@@ -21,7 +21,7 @@
 					<td>{{$user->name}}</td>
 					<td>{{$user->email}}</td>
 					<td>
-						<a href="{{route('admin.users.destroy', ['id' => $user->id]) }}" 
+						<a href="{{route('users.destroy', ['id' => $user->id]) }}" 
 						class="btn btn-danger">Delete</a>
 					</td>
 				</tr>	

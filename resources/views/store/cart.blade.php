@@ -49,7 +49,7 @@
 
 							<td class="cart_total">
 								<p class="cart_total_price">
-									{{ $item['price'] * $item['qtd'] }}
+									R$ {{ $item['price'] * $item['qtd'] }}
 								</p>
 							</td>
 

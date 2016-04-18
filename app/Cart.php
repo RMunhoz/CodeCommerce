@@ -2,8 +2,6 @@
 
 namespace CodeCommerce;
 
-//use Illuminate\Database\Eloquent\Model;
-
 class Cart
 {
     private $items;
