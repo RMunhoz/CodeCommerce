@@ -1,4 +1,4 @@
-@extends('template')
+@extends('layouts.templateStore')
 
 @section('content')
 <div class="container-fluid">
@@ -47,4 +47,6 @@
 		</div>
 	</div>
 </div>
+<br>
+<br>
 @endsection

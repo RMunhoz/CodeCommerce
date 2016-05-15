@@ -1,7 +1,7 @@
-@extends('store.templateStore')
+@extends('layouts.templateStore')
 
 @section('categories')
-    @include('store.partials._categories')
+    @include('partials._categories')
 @stop
 
 @section('content')

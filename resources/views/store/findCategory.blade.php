@@ -1,7 +1,7 @@
-@extends('store.templateStore')
+@extends('layouts.templateStore')
 
 @section('categories')
-    @include('store.partials._categories')
+    @include('partials._categories')
 @stop
 
 @section('content')
@@ -9,7 +9,7 @@
         <div class="features_items"><!--features_items-->
             <h2 class="title text-center">{{ $category->name }}</h2>
 
-            @include('store.partials._product')
+            @include('partials._product')
 
         </div><!--features_items-->
     </div>

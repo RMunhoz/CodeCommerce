@@ -1,4 +1,4 @@
-@extends('store.templateStore')
+@extends('layouts.templateStore')
 
 @section('content')
 	<section id="cart_items">
@@ -72,7 +72,7 @@
 										Total: R$ {{ $cart->getTotal() }}
 									</span>
 
-									<a href="#" class="btn btn-success">Finalizar Compra</a>
+									<a href="{{route('checkout.place')}}" class="btn btn-success">Finalizar Compra</a>
 								</div>
 								
 							</td>

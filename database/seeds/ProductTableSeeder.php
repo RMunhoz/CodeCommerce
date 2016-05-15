@@ -2,17 +2,17 @@
 
 use Illuminate\Database\Seeder;
 use CodeCommerce\Product;
-//use Faker\Factory as Faker;
+use Faker\Factory as Faker;
 
 class ProductTableSeeder extends Seeder
 {
 
     public function run()
     {
-        DB::table('products')->truncate();
-        factory('CodeCommerce\Product',30)->create();
+        //DB::table('products')->truncate();
+        //factory('CodeCommerce\Product',30)->create();
 
-        /*
+        
         $faker = Faker::create();
 
         foreach(range(1,40) as $i)
@@ -26,7 +26,7 @@ class ProductTableSeeder extends Seeder
 		        'category_id' => $faker->numberBetween(1,15),	
         	]);
         }
-        */
+        
 
     }
 

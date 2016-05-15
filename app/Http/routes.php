@@ -2,11 +2,6 @@
 
 Route::pattern('id', '[0-9]+');
 
-Route::controllers([
-	'auth'		=>	'Auth\AuthController',
-	'password'	=>	'Auth\PasswordController'
-]);
-
 Route::get('/', ['as' => 'store.index', 'uses' => 'StoreController@index']);
 Route::get('category/{id}',['as'=>'store.category','uses'=>'StoreController@category']);
 Route::get('product/{id}',['as'=>'store.product','uses'=>'StoreController@product']);
@@ -16,12 +11,39 @@ Route::get('cart/add/{id}',['as'=>'cart.add','uses'=>'CartController@add']);
 Route::get('cart/destroy/{id}',['as'=>'cart.destroy','uses'=>'CartController@destroy']);
 Route::put('cart/update/{id}',['as'=>'cart.update','uses'=>'CartController@update']);
 
-Route::get('checkout/placeOrder', ['as'=>'checkout.place','uses'=>'CheckoutController@place']);	
+Route::group(['middleware'=>'auth'], function(){
+	
+	Route::get('checkout/place-order', ['as'=>'checkout.place','uses'=>'CheckoutController@place']);
+	Route::get('account/orders', ['as'=>'account.orders', 'uses'=>'AccountController@orders']);
+	Route::get('account', ['as'=>'account.index', 'uses'=>'AccountController@index']);	
 
-Route::group(['prefix'=>'admin'], function(){
+});
 
-	Route::get('/users',['as'=>'users.index','uses'=>'AdminUsersController@index']);
-	Route::get('/users/destroy/{id}',['as'=>'users.destroy','uses'=>'AdminUsersController@destroy']);
+Route::get('home', ['as'=> 'home', 'uses'=>'HomeController@index']);
+
+Route::controllers([
+	'auth'		=>	'Auth\AuthController',
+	'password'	=>	'Auth\PasswordController',
+	'test'		=>	'TestController'
+]);
+
+Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
+
+	Route::group(['prefix'=> 'painel'], function(){
+
+		Route::get('', ['as'=>'painel.index', 'uses'=>'AdminController@index']);
+	});
+
+	Route::group(['prefix'=> 'users'],function(){
+
+		Route::get('',['as'=>'users.index','uses'=>'AdminUsersController@index']);
+		Route::get('{id}/show', ['as' => 'users.show', 'uses' => 'AdminUsersController@show']);
+        Route::get('create', ['as' => 'users.create', 'uses' => 'AdminUsersController@create']);
+        Route::post('store', ['as' => 'users.store', 'uses' => 'AdminUsersController@store']);
+        Route::get('{id}/edit', ['as' => 'users.edit', 'uses' => 'AdminUsersController@edit']);
+        Route::put('{id}/update', ['as' => 'users.update', 'uses' => 'AdminUsersController@update']);
+        Route::get('{id}/destroy', ['as' => 'users.destroy', 'uses' => 'AdminUsersController@destroy']);
+	});
 
 	Route::group(['prefix'=>'categories'], function(){
 
